@@ -1,0 +1,19 @@
+<section id="content">
+  <ol id="links-list">
+  <% @links.each do |link| %>
+  <li>
+    <span class="link"><%= link_to link.url, link.url %></span>
+    <% if link.user == current_user %>
+    <span class="details">
+      <%= link_to "edit", edit_link_path(link) %>
+      <%= link_to "delete", link_path(link), method: :delete %>
+    </span>
+    <% end %>
+    <p>Posted By
+    <%= link_to link.user.username %>
+    <%= time_ago_in_words(link.created_at) %>
+    </p>
+  </li>
+  <% end %>
+</ol>
+</section>
