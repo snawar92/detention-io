@@ -1,7 +1,7 @@
 # Change these
 server '54.174.86.45', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:snawar92/detention-io.git'
+set :repo_url,        'git@github.com:vmgonzalez/detention-io.git'
 set :application,     'detention-io'
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
