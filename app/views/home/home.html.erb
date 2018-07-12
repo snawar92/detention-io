@@ -1,19 +1,34 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <section id="content">
   <ol id="links-list">
-  <% @links.each do |link| %>
-  <li>
-    <span class="link"><%= link_to link.url, link.url %></span>
-    <% if link.user == current_user %>
-    <span class="details">
-      <%= link_to "edit", edit_link_path(link) %>
-      <%= link_to "delete", link_path(link), method: :delete %>
-    </span>
+    <% @links.each do |link| %>
+    <li>
+      <span class="link"><%= link_to link.url, link.url %></span>
+      <% if link.user == current_user %>
+      <span class="details">
+        <%= link_to "edit", edit_link_path(link) %>
+        <%= link_to "delete", link_path(link), method: :delete %>
+      </span>
+      <% end %>
+      <p>Posted By
+        <%= link_to link.user.username %>
+        <%= time_ago_in_words(link.created_at) %>
+      </p>
+      <div class="btn-group">
+        <a class="btn btn-default btn-sm" href="<%= link.url %>" target="_blank">Visit Link</a>
+
+        <%= link_to like_link_path(link), method: :put, style: "padding: 2px; padding-left: 24px" do %>
+        <i class="fa fa-thumbs-up"></i>
+        <%= link.get_upvotes.size %>
+        <% end %>
+
+        <%= link_to dislike_link_path(link), method: :put, style: "padding: 2px" do %>
+        <i class="fa fa-thumbs-down"></i>
+        <%= link.get_downvotes.size -%>
+        <% end %>
+
+      </div>
+    </li>
     <% end %>
-    <p>Posted By
-    <%= link_to link.user.username %>
-    <%= time_ago_in_words(link.created_at) %>
-    </p>
-  </li>
-  <% end %>
-</ol>
+  </ol>
 </section>

@@ -1,10 +1,11 @@
 header.navbar
   ul.links
-    li = link_to "Mlink", '#'
+    li = link_to "Detention.io", root_path
     li = link_to "Home", root_path
   ul.auth
+    li = link_to "Download CSV", links_path(format: "csv")
     - if user_signed_in?
-      li = link_to "Submit Link", 'links/new'
+      li = link_to "Submit Link", new_link_path
       li = link_to 'Edit profile', edit_user_registration_path
       li = link_to 'Logout', destroy_user_session_path, :method => :delete
     - else
