@@ -9,6 +9,9 @@ Devise.setup do |config|
   # config.secret_key = '01e786958e0c8f22d4c4e7bfba7ed776585aa30cd836daa83fa5026a6b03f60ce554b4eb3c4e5c9a58a20d2f950282f3eec5e64dd225b08a698710db8b08d1f7'
   config.secret_key = '097b7474d309b9e570a29b6d8fcdc3c02513f82180a065653d13c60e85e2cf7a4eddd37c34428d28639ee33ee68266e872df2731542aa8f20eeccdd63f4915b1'
 
+  config.reset_password_keys = [ :username ]
+  config.confirmation_keys = [ :username ]
+
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -36,7 +39,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -222,7 +225,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
