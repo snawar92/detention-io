@@ -10,7 +10,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @link.to_csv }
+      format.csv { send_data @link.to_csv, :filename => 'Placements.csv' }
       format.xls
     end
   end

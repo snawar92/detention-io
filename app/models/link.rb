@@ -5,12 +5,11 @@ class Link < ApplicationRecord
   validates :url, presence: true
 
   def self.to_csv(options = {})
-    desired_columns = ["url","user_id"]
+    desired_columns = ["url"]
     CSV.generate(options) do |csv|
-      csv << ["Url", "Created By"]
+      csv << ["Placements"]
       all.each do |link|
-        array = link.attributes.values_at(*desired_columns)
-        csv << [array.first, User.find_by_id(array.second).username]
+        csv << link.attributes.values_at(*desired_columns)
       end
     end
   end

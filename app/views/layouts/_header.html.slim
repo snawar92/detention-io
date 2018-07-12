@@ -1,9 +1,10 @@
 header.navbar
   ul.links
-    li = link_to "Detention.io", root_path
-    li = link_to "Home", root_path
+    li = link_to "Detention", root_path
   ul.auth
-    li = link_to "Download CSV", links_path(format: "csv")
+    li
+      = link_to links_path(format: "csv") do |l|
+        i.fa.fa-download Export all placements
     - if user_signed_in?
       li = link_to "Submit Link", new_link_path
       li = link_to 'Edit profile', edit_user_registration_path
