@@ -7,7 +7,7 @@ class Link < ApplicationRecord
   def self.to_csv(options = {})
     desired_columns = ["url"]
     CSV.generate(options) do |csv|
-      csv << ["Placements"]
+      csv << ["Placement"]
       all.each do |link|
         csv << link.attributes.values_at(*desired_columns)
       end
